@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Panier DOM</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxincons@lastest/boxincons.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!------------------------------------------header start---------------------------------------->
+        <header>
+            <a href="#" class="logo">Bags</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+            <!---------------------------navbar start------------------------------------------->
+            <ul class="navbar">
+                <li><a href="#Shop">Shop</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Faq">Faq</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+            <!---------------------------------------icons start------------------------------------------------>
+            <div class="icons">
+                <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAvJJREFUWEfV11uopnMUBvDfOJZC7hinaRAxmdxMwoUohigXiByLMTdTqIkoKckxkZDQoEihFELJ6QK5oiiHGDKRUJQcc+rR2uadt3fv7/2Pvb/Z1s33vd+31vN/Wv+1nrXeJRaZLVlkfPxvCR2HE3AklmNPfIWNeBMv4LX5yPakDK3E3Th6xGEvYR0+GOE7q8tchM7D/di54YCfcSaebYjZwnU2QqfjiY7n77gXr+BDfFpXdwhynZdg+45/rvfFrSE1RGh/vItdC/ATnIyP5jhgBZ7HPuXzDQ7Ft62khgg9hdMKKNk4ZiRwyLyBfSv2Pqz9r4RW4a0C+Q0H47MG0DTB2/wjJ3/hwOrE0RD9DN2BSys63y8fjbTZ8TGcVY9X4NYWjD6htGyyEjuqNKYFL75n4PEKehnHtwD0CX2P3QtgN/zQAla+y6oL8/g50iSjrU8odbNjRe+AP0YjbXaMbv1Sj9GlXVow+oS+xF4FkM+Mh1Zbii8qKPJxeAtAn9DrVTvBOKlmVAtefE/F0xX0KM5tAegTugbXFcADWNMCVr6P4Jz6fiVuacHoE8ooeL8A/iy1jTiOtejQO+X8Kw7CprHB8RtS6odxfoF8XJP+6xGg+5VS712+1yMZb7IhQinK97BHIWWQrp4wy47Ac7UnJSzNcAB+amIzS4aCcQqe6YBl2t+DVzvTPgKaAXosLu5hPYkL8eN8EQrO2XgIOzWARn9SQ9ksv0PGz52I4I6ySRvjYbirsjAJMGMiXZlspvZmBDbXdnOne+fEmURoJjhL2ImdnTp1tl3VSHbpB3sLXZa5/uqRAk+hzwuhSTj9/9NxeQHobpHxuXZSpsZmqJVQ/G/AVQOBEcoI5qAtJKFg5yXhooGT0yz5PeK7hS0koRyUOtuACwZI5ffIRTbLf22hCc0cdDsuGyCVV6bu281UX6Wzyq7vkLoRV0/7yvrn3VQFHWK3DVX1tK6se3ZGTUbQ1Ltsa6RiqjU0iuC2uLI5iS06Qn8D1St7JWzOI0kAAAAASUVORK5CYII="/></a>
+                <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAttJREFUWEftl0uojVEUx38XeZQQN5JQiJS4kkheUwPvESEMxFXK20AhA3mFgVchAwOPkpAxA4+St5RQXonyTISE/qf1aXfv2d/e33f34CSrTp199tpr/c7aa+29dh01JnU1xsM/BdQbWAEMA4ZYpO8Dt4FdwIsy0S8boWnAUaCzx+knYD5wpihUGSBFZWeko+XA7kjdilpRoKHAdaCtObkCrAPu2VjzW4HRNv4BDAcexEIVAWoD3ADkVHICmA38auKstc3NtN+VUyOBnzFQRYAmABfN6AegH/DR46Qb8MTJsTHA1dRAC4AjZvQ0kEXA5+csMNkm5wLHUgOtsfyQ3W3A2oADJb4KQLIqthCKbNlUp4xVztMDQG6EpgDnUkeoD/DMjL4HBgLvPE66A4+ATjbfC3iVGkj2LgCTzPBJYFaVKmsFnAJmmN55J5eCTEW2TMZ0XTwEOpjla4By6y6gY2EwsN05h74Cg4CXQRJTKAqkZcuAPZEOlgL7InUramWAtC50l+l8mhebyC5wWaBs+7LbvsFOYl0hOpm1ba+LRCbTbQlQGX/BNWWAlNCKiD49PB7eWKRuAd+CFI5CLJBKeSWwCOhfIPd+23m03wpB41yJARpg99CokLHA/GVr2h7n6YWA5gCHgHaOEVWQWtU7wFuP8Xqnte3i6Hw3qOM+qDwgbY0ct7fFarbUjKlfjhXZV9e4xWnqlFPqwdWeNBMfkHJGIc46v6d29igqZUQFoAu5ry2W7XFAs5zyASkS+lcSdXoj7HooA5Ot0evkJqA/K1kN7Ghq0Aekm7mnKW8ENrWExFm7GVhv4+dOxP6qVAPq6rQV6peVlJ8TAakd0RMpk47AF9d2NaDxwCVT0lWQNfWJmCovEHUFkrGWq7kRagT2msZBYHEqErNzGFho35cAB0IRUs5sMCXljsYpJdd+tS2bCOgj0bMne/qkgsq1HzqpU0FE2/kPFApVzUXoDynCfSW0fIRIAAAAAElFTkSuQmCC"/></a>
+                <a href=""><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAaVJREFUWEft2EFLVUEYxvGf6CJdRa2iVi0CixZB0kdoERhIm8J1EOTOIDHKFiWROyXwE6gQ2UrctWglKEFQrsKNtK19kDIxyeF2TzNzO4rEmc3l3Ped5/3fZ+Y9zNw+x2z0HTMe/xXQaUxiBFdwCjt4hwV86MX9Xh0axzxO1hTdwyymS6F6AbqLxcxCz/AoM/dXWinQJWziRCzyHlP4FJ8v4yWuVSCuYisXqgRoKO6LC1F8CWHpfnYU68cbjMbv13DjMIBu4m0U/o7z+FZT6Ay+YDDGz+JrDlSJQ/fwKoquYixRYB3XY85tLDcN9BhPo+jzjA4KXfYw5ofPF00DzeBJFA1g4flvozS/tsvO4XVHp+T8uNKcDdzCbnVitz0U3r6hdY9iPMBcCqhq9WFD/bH03RyqA6pOzoHOyW+Bfndijuu1XZazHE3trX9asqYgqjotUMrV1qHWoZQDqXi7h1qHUg6k4ll76H68labEmohPxGv3gVa389AwPjdRLUPjIrZTJ8YQvxP/SAg30YEM4ZKUH/gYj8krnRNL7mUlRXvObYFS1u0DDoZdJTtWLCQAAAAASUVORK5CYII="/></a>
+            </div>
+        </header>
+        <br><br><br><br><br><br><br>
+        <div class="header-item">
+            <h1>ITEM  SUMMARY</h1>
+        </div>    <br><br>
+        <!---------------------------------container start------------------------------------->
+        <div class="container">
+            
+            <div class="image">
+                <img src="images/pantalon1.webp" alt="pants" height="150" width="200">
+                <h3>article 1</h3>
+                <p class="card-text1">Price: 25 </p>
+                
+                <input id="demoInput1" type=number min=0 max=110>
+                <button onclick="increment('demoInput1')">+</button>
+                <button onclick="decrement('demoInput1')">-</button>
+                <div id="main1">
+                    <button class="btn-delete1" onclick='del1()' >X</button>
+                </div>
+                <button ><i class="fas fa-heart"></i></button>
+                
+            </div>
+    
+            <div class="image">
+                <img src="images/t-shirt1.webp" alt="t-shirt1" height="150" width="200">
+                <h3>article 2</h3>
+                <p class="card-text2">Price: 44 </p>
+                
+                <input id="demoInput2" type=number min=0 max=110>
+                <button onclick="increment('demoInput2')">+</button>
+                <button onclick="decrement('demoInput2')">-</button>
+                <div id="main2">
+                    <button class="btn-delete2" onclick='del2()' >X</button>
+                </div>
+                <button ><i class="fas fa-heart"></i></button>
+            </div>
+    
+            <div class="image">
+                <img src="images/t-shirt2.webp" alt="t-shirt2" height="150" width="200">
+                <h3>article 3</h3>
+                <p class="card-text3">Price: 15 </p>
+                
+                <input id="demoInput3" type=number min=0 max=110>
+                <button onclick="increment('demoInput3')">+</button>
+                <button onclick="decrement('demoInput3')">-</button>
+                <div id="main3">
+                    <button class="btn-delete3" onclick='del3()' >X</button>
+                </div>
+                <button ><i class="fas fa-heart"></i></button>
+            </div>
+           
+            <div class="image">
+                <img src="images/chaussure1.jpg" alt="chaussure" height="150" width="200">
+                <h3>article 4</h3>
+                <p class=" ">Price: 70 </p>
+                
+                <input id="demoInput4" type=number min=0 max=110>
+                <button onclick="increment('demoInput4')">+</button>
+                <button onclick="decrement('demoInput4')">-</button>
+                <div id="main4">
+                    <button class="btn-delete3" onclick='del4()'>X</button>
+                </div>
+                <button ><i class="fas fa-heart"></i></button>
+            </div>
+            <br>
+            <h1 style="padding-top: 20px">Total_Price: <span id="total"></span></h1>
+        </div>
+        <br><br>
+        <!--------------------------------------about start------------------------------------------>
+        <section class="about" id="about">
+            <div class="about-content">
+                <h2>About</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id atque odio accusantium. 
+                    Vel magni accusamus eveniet hic expedita? Neque, quae esse facere repudiandae illum 
+                    nesciunt recusandae nisi provident tenetur quibusdam!
+                </p>
+            </div>
+        </section>
+        <!-----------------------------------contact start---------------------------------->
+        <section class="contact" id="contact">
+            <div class="main-contact">
+                
+                <div class="contact-content">
+                    <li><a href="#Shop">Shop</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#Faq">Faq</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </div>
+            
+                <div class="contact-content">
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Store Policy</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                </div>
+                
+                <div class="contact-content">
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Tel: 77 101 0942</a></li>
+                </div>
+                
+                <div class="contact-content">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                </div>
+
+                <div class="action">
+                    <form>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="submit" name="submit" value="Submit" required>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+        <!---------------------------------last start-------------------------------------->
+        <div class="last">
+            <p</p>
+        </div>
+        <!------------------------------custom. js. link ---------------------------------->
+        <script src="script.js"></script>
+    </body>
+</html>
